@@ -40,7 +40,6 @@ pub fn build(b: *std.Build) void {
     exe.root_module.addImport("yaml", yaml.module("yaml"));
     exe.root_module.addImport("dis_x86_64", dis_x86_64.module("dis_x86_64"));
     exe.root_module.strip = strip;
-    exe.linkLibC();
 
     const exe_opts = b.addOptions();
     exe.root_module.addOptions("build_options", exe_opts);

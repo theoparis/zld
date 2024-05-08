@@ -8,12 +8,12 @@ const Allocator = mem.Allocator;
 const ThreadPool = std.Thread.Pool;
 const Zld = @import("Zld.zig");
 
-var tracy_alloc = tracy.tracyAllocator(std.heap.c_allocator);
+var tracy_alloc = tracy.tracyAllocator(std.heap.page_allocator);
 
 const gpa = if (tracy.enable_allocation)
     tracy_alloc.allocator()
 else
-    std.heap.c_allocator;
+    std.heap.page_allocator;
 
 const usage =
     \\zld is a generic linker driver.
